@@ -70,7 +70,7 @@ def rps_tournament_winner ( tourney )
   if tourney.first.first.is_a? String
     return rps_game_winner tourney
   else
-    rps_game_winner [rps_tournament_winner(tourney.first), rps_tournament_winner(tourney.last)])
+    rps_game_winner [rps_tournament_winner(tourney.first), rps_tournament_winner(tourney.last)]
   end
 end
 
