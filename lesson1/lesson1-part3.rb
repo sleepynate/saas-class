@@ -14,14 +14,24 @@ sleeptron@gmail.com
 # Part 3: anagrams
 ###
 
-def combine_anagrams(words)
+class String
+  def sort
+    self.split(//).sort.join
+  end
+end
 
+def combine_anagrams(words)
+  words.collect do |word|
+    words.select do |maybe_word|
+      maybe_word.downcase.sort.eql? word.downcase.sort
+    end
+  end.uniq
 end
 
 class TestAnagrams < Test::Unit::TestCase
   def test_combine_anagrams
     input = ['cars', 'for', 'potatoes', 'racs', 'four', 'scar','creams','scream']
-    output = [["cars", "racs", "scar"], ["four"], ["for"], ["potatoes"], ["creams", "scream"]]
+    output = [["cars", "racs", "scar"], ["for"], ["potatoes"], ["four"], ["creams", "scream"]]
     assert_equal(output, combine_anagrams(input))
   end
 end
