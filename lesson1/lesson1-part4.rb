@@ -25,6 +25,7 @@ class Dessert
   def calories=(calories)
     @calories = calories
   end
+  attr_accessor :name
   def healthy?
     @calories < 200
   end
@@ -38,7 +39,12 @@ class JellyBean < Dessert
     @name = name
     @calories = calories
   end
+  attr_accessor :flavor
   def delicious?
-    false ? @flavor.eql? 'black licorice' : true
+    if @flavor.to_s.gsub(/ /,'').downcase.eql?('blacklicorice')
+      false
+    else
+      true
+    end
   end
 end
