@@ -27,7 +27,7 @@ end
 
 module Enumerable
   def palindrome?
-    return self == self.reverse
+    return self.to_a == self.to_a.reverse
   end
 end
 
@@ -52,5 +52,6 @@ class TestEnumerablePalinfrom < Test::Unit::TestCase
   def test_enumberable_palindrome
     assert_equal(true, ["a", "b", "c", "b", "a"].palindrome?)
     assert_equal(false, [1,2,3,4,3,2].palindrome?)
+    assert_equal(false, (1..2).palindrome?)
   end
 end
