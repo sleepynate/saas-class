@@ -25,6 +25,12 @@ class String
   end
 end
 
+module Enumerable
+  def palindrome?
+    return self == self.reverse
+  end
+end
+
 class TestCurrencyConversion < Test::Unit::TestCase
   def test_currency
     assert_equal(1.dollar, 1)
@@ -39,5 +45,12 @@ class TestPalindromeStrings < Test::Unit::TestCase
   def test_palindrome
     assert_equal(true, "bob".palindrome?)
     assert_equal(false, "boo".palindrome?)
+  end
+end
+
+class TestEnumerablePalinfrom < Test::Unit::TestCase
+  def test_enumberable_palindrome
+    assert_equal(true, ["a", "b", "c", "b", "a"].palindrome?)
+    assert_equal(false, [1,2,3,4,3,2].palindrome?)
   end
 end
